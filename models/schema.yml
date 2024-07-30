@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    description: original dataset in a raw
+    tables:
+      - name: product
+        identifier: raw_gz_product
+        description: the table product contain all de information about the product
+        tests:
+          - unique
+          - not_null
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales information like the id of sales
+        tests:
+        - unique
+        - not_null
+      - name: ship
+        identifier: raw_gz_ship
+        description: in this table you can find some info about date and status of the ship
+        tests:
+        - unique
+        - not_null
