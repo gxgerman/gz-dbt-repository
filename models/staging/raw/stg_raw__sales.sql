@@ -16,7 +16,8 @@ renamed as (
         quantity
 
     from source
+   
 
 )
 
-select * from renamed
+select *  from renamed
