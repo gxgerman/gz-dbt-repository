@@ -1,0 +1,41 @@
+
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    description: original dataset in a raw
+    tables:
+      - name: product
+        identifier: raw_gz_product
+        description: the table product contain all de information about the product
+        tests:
+        - unique
+        - not_null
+
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales information like the id of sales
+        tests:
+        - unique
+      - name: ship
+        identifier: raw_gz_ship
+        description: in this table you can find some info about date and status of the ship
+        tests:
+        - unique
+        - not_null
+
+      - name: stg_raw_product
+      - name: stg_raw_sales
+      - name: stg_raw_ship
+      - name: int_sales_margin
+        description: margin calcultation per order line / product sale
+        columns:
+        - name: margin
+          description: Margin = Revenue - Purchase_cost
+        - name: Purchase_cost
+          description: Purchase_cost = Quantity * Purchase_price 
+        - name: int_orders_margin
+          description: margin calcultation per order 
+  
+    
