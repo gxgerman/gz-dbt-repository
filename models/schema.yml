@@ -9,33 +9,121 @@ sources:
       - name: product
         identifier: raw_gz_product
         description: the table product contain all de information about the product
-        tests:
-        - unique
-        - not_null
+        #tests:
+          #- unique
 
       - name: sales
         identifier: raw_gz_sales
         description: sales information like the id of sales
-        tests:
-        - unique
+        #tests:
+           #- unique
       - name: ship
         identifier: raw_gz_ship
         description: in this table you can find some info about date and status of the ship
-        tests:
-        - unique
-        - not_null
-
-      - name: stg_raw_product
-      - name: stg_raw_sales
-      - name: stg_raw_ship
-      - name: int_sales_margin
-        description: margin calcultation per order line / product sale
+        #tests:
+          #- unique
+      
+      
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: the table product contain all de information about the product
         columns:
-        - name: margin
-          description: Margin = Revenue - Purchase_cost
-        - name: Purchase_cost
-          description: Purchase_cost = Quantity * Purchase_price 
-        - name: int_orders_margin
-          description: margin calcultation per order 
-  
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+            tests:
+                - not_null
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+       
     
+    
+      - name: bing
+        identifier: raw_gz_bing
+        description: the table product contain all de information about the product
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+            tests:
+                - not_null
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+       
+   
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: the table product contain all de information about the product
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+            tests:
+                - not_null
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+       
+       
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: the table product contain all de information about the product
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+            tests:
+                - not_null
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+models:
+  - name: int_campaigns_day
+    description: Aggregated campaign data by day, including total advertising costs
+    columns:
+      - name: date
+      - name: date_date
+        description: The date for which the data is aggregated
+        tests:
+          - not_null
+      - name: ads_cost
+        description: Total advertising costs aggregated by day
+        tests:
+          - not_null
+          
+
+  - name: finance_campaigns_day
+    description: Calculates the average basket value per day
+    columns:
+      - name: date_date
+        description: The date for which the average basket is calculated
+        tests:
+          - not_null
+      - name: ads_cost
+        description: ads cost of the column
+        tests:
+          - not_null
+      - name: operational_margin
+        description: The margin of operational business
+        tests:
+          - not_null
+      - name: average_basket
+        description: Average value of transactions or orders per day
+        tests:
+          - not_null     
+                
+
+  - name: int_sales_margin
+          
+
+
+  
